@@ -1,11 +1,32 @@
 {
   "name": "statto-merge",
+  "description": "Merges sets of unprocessed statto data sets.",
   "version": "0.1.0",
-  "description": "Merges sets of statto stats.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "^3.5.0"
+  },
   "scripts": {
     "test": "tape test.js"
   },
-  "devDependencies": {
-    "tape": "^3.5.0"
-  }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tynio/statto-merge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tynio/statto-merge/issues",
+    "email": "chilts@tyn.io"
+  },
+  "author": {
+    "name": "Andrew Chilton",
+    "email": "chilts@tyn.io",
+    "url": "https://tyn.io/"
+  },
+  "license": "MIT",
+  "keywords": [
+    "statto",
+    "stats",
+    "statsd"
+  ]
 }
