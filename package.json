@@ -1,0 +1,11 @@
+{
+  "name": "statto-merge",
+  "version": "0.1.0",
+  "description": "Merges sets of statto stats.",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "devDependencies": {
+    "tape": "^3.5.0"
+  }
+}
