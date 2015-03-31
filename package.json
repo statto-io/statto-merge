@@ -3,13 +3,14 @@
   "description": "Merges sets of unprocessed statto data sets.",
   "version": "0.1.0",
   "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
   "dependencies": {},
   "devDependencies": {
     "tape": "^3.5.0"
   },
-  "scripts": {
-    "test": "tape test.js"
-  },
+  "homepage": "https://github.com/tynio/statto-merge",
   "repository": {
     "type": "git",
     "url": "https://github.com/tynio/statto-merge.git"
