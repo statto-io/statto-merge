@@ -40,7 +40,7 @@ test('Check a blank merge', function(t) {
     info: { merged : 2 },
     ts: "2015-03-27T12:26:45.000Z",
   }
-  t.deepEqual(merge(info, s1, s2), s3, 'The merge is correct')
+  t.deepEqual(merge(info, [s1, s2]), s3, 'The merge is correct')
 
   t.end()
 })
@@ -73,7 +73,7 @@ test('Check a simple merge', function(t) {
     info: { merged :2 },
     ts: "2015-03-27T12:26:45.000Z",
   }
-  t.deepEqual(merge(info, s1, s2), s3, 'The merge is correct')
+  t.deepEqual(merge(info, [s1, s2]), s3, 'The merge is correct')
 
   t.end()
 })
@@ -142,7 +142,7 @@ test('Check the merge', function(t) {
   t.plan(1)
 
   var info = { merged : 2}
-  t.deepEqual(merge(info, stats1, stats2), stats3, 'The merge is correct')
+  t.deepEqual(merge(info, [stats1, stats2]), stats3, 'The merge is correct')
 
   t.end()
 })

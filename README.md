@@ -4,21 +4,85 @@ Merges sets of unprocessed statto data sets.
 
 ## Synopsis ##
 
-However, you store your stats, sometimes you need to merge two sets together. You could try using this.
+However, you store your stats, sometimes you need to merge two sets together. You could try using this
+package. Remember, you can only merge raw stats since processed stats don't actually contain all information required
+to be able to merge two sets properly.
 
 ```js
 var merge = require('statto-merge')
 
+var info = { put : 'whatever', you : 'like, here : true }
 var a = { /* a statto data set */
 var b = { /* a statto data set */
 var c = { /* a statto data set */
 var d = { /* a statto data set */
 
-var result1 = merge(a, b)
-var result2 = merge(a, b, c, d)
+var result1 = merge(info, [a, b])
+var result2 = merge(info, [a, b, c, d])
 ```
 
-That's it.
+## Example ##
+
+```js
+var merge = require('statto-merge')
+
+var ts1 = '2015-04-12T09:08:00.000Z'
+var ts2 = '2015-04-12T09:08:00.000Z'
+
+var raw1 = {
+  counters : {
+    hit : 1
+  },
+  gauges : {
+    memory : 68
+  },
+  sets : {
+    color : { white : 2 }
+  },
+  timers : {
+    req : [ 79, 86 ],
+  },
+}
+var raw2 = {
+  counters : {
+    hit : 2
+  },
+  gauges : {
+    memory : 76
+  },
+  sets : {
+    color : { white : 1, black : 4 }
+  },
+  timers : {
+    req : [ 81, 93, 89 ],
+  },
+}
+
+var stats = merge(info, [ raw1, raw2 ])
+// =>
+var stats = {
+  counters : {
+    hit : 3  // counters are added together
+  },
+  gauges : {
+    memory : 76  // gauges take the last value seen
+  },
+  sets : {
+    color : { white : 3, black : 4 }, // each value in the set are added together
+  },
+  timers : {
+    req : { // timers get processed into the following
+      sum    : 534,
+      count  : 6,
+      min    : 81,
+      max    : 94,
+      mean   : 89,
+      median : 89,
+      std    : 4.041451884327381,
+    },
+  },
+}
+```
 
 ## ChangeLog ##
 

@@ -6,9 +6,7 @@
 //
 // --------------------------------------------------------------------------------------------------------------------
 
-function merge(info) {
-  var objs = Array.prototype.slice.call(arguments, 1)
-
+function merge(info, objs) {
   var stats = {
     counters: {},
     gauges: {},
@@ -18,6 +16,11 @@ function merge(info) {
   }
 
   objs.forEach(function(obj) {
+    obj.counters = obj.counters || {}
+    obj.gauges   = obj.gauges   || {}
+    obj.sets     = obj.sets     || {}
+    obj.timers   = obj.timers   || {}
+
     // do counters first
     Object.keys(obj.counters).forEach(function(key) {
       if ( !(key in stats.counters) ) {
